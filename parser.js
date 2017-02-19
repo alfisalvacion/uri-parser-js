@@ -45,6 +45,12 @@ function parseUri(uri) {
                 slashes++;
                 state = 'authority';
                 continue;
+            } else if (uri[i] == '#') {
+                state = 'fragment';
+                continue;
+            } else if (uri[i] == '?') {
+                state = 'query';
+                continue;
             }
         } else if (state == 'authority') {
             if (slashes < 2) {
